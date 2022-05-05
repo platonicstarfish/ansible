@@ -1,0 +1,23 @@
+# vim: ts=2:sw=2
+
+- hosts: all
+  roles:
+    - role: staticdev.pyenv
+      pyenv_python_versions:
+        - 3.10.4
+        - 3.9.12
+      pyenv_global:
+        - 3.10.4
+      pyenv_enable_autocompletion: true
+  tasks:
+    - name: zsh use pyenv
+      blockinfile:
+        path: "{{ ansible_env.HOME }}/.zshrc"
+        block: |
+          source {{ ansible_env.HOME }}/pyenv/.pyenvrc
+          source {{ ansible_env.HOME }}/pyenv/completions/pyenv.zsh
+        marker: "# {mark} ANSIBLE MANAGED BLOCK - PYENV"
+
+
+
+

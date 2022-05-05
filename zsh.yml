@@ -1,0 +1,42 @@
+# vim: ts=2:sw=2
+
+- hosts: all
+  tasks:
+  - name: install zsh
+    become: yes
+    apt: 
+      name: zsh
+  - name: antigen script
+    copy:
+      src: antigen.zsh
+      dest: .antigen.zsh
+  - name: source antigen
+    blockinfile:
+      path: "{{ ansible_env.HOME }}/.zshrc"
+      create: yes
+      block: |
+        # Load Antigen
+        source "{{ ansible_env.HOME }}/.antigen.zsh"
+        
+        # Load Antigen configurations
+        antigen init ~/.antigenrc
+  - name: antigenrc
+    blockinfile:
+      path: "{{ ansible_env.HOME }}/.antigenrc"
+      create: yes
+      block: "{{ lookup('file', 'antigenrc') }}"
+  - name: antigen bundles for airgap use
+    synchronize:
+      set_remote_user: no
+      src: antigen-bundles
+      dest: "{{ ansible_env.HOME }}/.antigen/bundles"
+  - name: zsh as login shell
+    become: yes
+    user:
+      name: "{{ ansible_env.USER }}"
+      create_home: no
+      shell: /bin/zsh
+      generate_ssh_key: yes
+      groups: adm,dialout,cdrom,floppy,sudo,audio,dip,video,plugdev,tcpdump
+
+
