@@ -2,10 +2,19 @@
 
 - hosts: all
   tasks:
-  - name: install zsh
+  - name: package dependencies
+    # TODO: Only run on debin based systems
     become: yes
-    apt: 
-      name: zsh
+    apt:
+      cache_valid_time: 3600
+  - name: dependencies and zsh
+    become: yes
+    package:
+      name:
+        - git
+        - unzip
+        - bzip2
+        - zsh
   - name: antigen script
     copy:
       src: antigen.zsh
