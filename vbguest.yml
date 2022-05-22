@@ -1,0 +1,36 @@
+# vim: ts=2:sw=2
+
+- hosts: all
+  tasks:
+  - name: virtualbox guest packages
+    become: yes
+    package:
+      state: present
+      name:
+        - virtualbox-guest-additions-iso
+        - build-essential
+
+  - name: mount vbox additions
+    become: yes
+    ansible.posix.mount:
+      state: mounted
+      boot: no
+      src: /usr/share/virtualbox/VBoxGuestAdditions.iso
+      path: /media/vboxguestadditions
+      opts: ro
+      fstype: iso9660
+
+  - name: run vbox additions installation
+    become: yes
+    expect:
+      command: /media/vboxguestadditions/VBoxLinuxAdditions.run
+      timeout: 120
+      echo: yes
+      creates: "/lib/modules/{{ ansible_facts['kernel'] }}/misc/vboxguest.ko"
+      responses:
+        Do you wish to continue\? \[yes or no\]: "yes"
+    register: result
+    failed_when:
+      - result.rc != 0
+      - result.rc != 2
+
