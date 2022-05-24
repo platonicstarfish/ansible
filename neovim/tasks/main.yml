@@ -1,0 +1,10 @@
+- name: install neovim
+  become: yes
+  apt: 
+    name: neovim
+    update_cache: yes
+
+- name: alias vim -> nvim
+  lineinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    line: 'alias vim="nvim"'
