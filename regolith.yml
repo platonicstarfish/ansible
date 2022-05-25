@@ -12,7 +12,7 @@
       become: yes
       apt_repository:
         state: present
-        repo: deb [arch=amd64] https://regolith-release-ubuntu-jammy-amd64.s3.amazonaws.com jammy main
+        repo: deb [arch=amd64] http://regolith-release-ubuntu-jammy-amd64.s3.amazonaws.com jammy main
         filename: regolith
 
     - name: install regolith
@@ -28,6 +28,8 @@
       apt:
         state: present
         name: lightdm
+
+    # TODO: look into the package regolith-lightdm-config
 
     - name: set lightdm as default login manager
       become: yes

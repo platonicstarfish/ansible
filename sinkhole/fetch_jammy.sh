@@ -433,3 +433,95 @@ $fetch http://de.archive.ubuntu.com/ubuntu/pool/main/libf/libfile-fcntllock-perl
 $fetch http://de.archive.ubuntu.com/ubuntu/pool/main/liby/libyaml-libyaml-perl/libyaml-libyaml-perl_0.83%2bds-1build1_amd64.deb
 $fetch http://de.archive.ubuntu.com/ubuntu/pool/main/m/manpages/manpages-dev_5.10-1ubuntu1_all.deb
 
+
+# regolith dependencies
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/a/ayatana-indicator-messages/libmessaging-menu0_22.2.0-1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/f/fonts-font-awesome/fonts-font-awesome_5.0.10%2breally4.7.0%7edfsg-4.1_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/j/javascript-common/javascript-common_11%2bnmu1_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/libc/libcommon-sense-perl/libcommon-sense-perl_3.75-2build1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/libj/libjsoncpp/libjsoncpp25_1.9.5-3_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/libj/libjson-xs-perl/libjson-xs-perl_4.030-1build3_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/libt/libtypes-serialiser-perl/libtypes-serialiser-perl_1.01-1_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/libu/liburing/liburing2_2.1-2build1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/libx/libxcb/libxcb-composite0_1.14-3ubuntu3_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/libx/libxcb/libxcb-damage0_1.14-3ubuntu3_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/libx/libxcb/libxcb-xinerama0_1.14-3ubuntu3_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/n/node-jquery/libjs-jquery_3.6.0%2bdfsg%2b%7e3.5.13-1_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/p/plocate/mlocate_1.1.15-1ubuntu2_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/p/plocate/plocate_1.1.15-1ubuntu2_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/p/python-psutil/python3-psutil_5.9.0-1build1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/p/python-setproctitle/python3-setproctitle_1.2.2-2build1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/s/sphinx/libjs-sphinxdoc_4.3.2-1_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/s/sysstat/sysstat_12.5.2-2build2_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/u/underscore/libjs-underscore_1.13.2%7edfsg-2_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/main/x/xcb-util-wm/libxcb-ewmh2_0.4.1-1.1build2_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/b/bamf/bamfdaemon_0.5.6%2b22.04.20220217-0ubuntu1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/b/bamf/libbamf3-2_0.5.6%2b22.04.20220217-0ubuntu1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/d/dex/dex_0.9.0-1_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/f/faba-icon-theme/faba-icon-theme_4.3-1_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/f/fcitx/libfcitx-config4_4.2.9.8-5_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/f/fcitx/libfcitx-gclient1_4.2.9.8-5_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/f/fcitx/libfcitx-utils0_4.2.9.8-5_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/g/gnome-flashback/gnome-flashback_3.44.0-1ubuntu1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/g/gnome-flashback/gnome-flashback-common_3.44.0-1ubuntu1_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/g/gnome-icon-theme/gnome-icon-theme_3.12.0-4_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/g/gnome-panel/libgnome-panel0_3.44.0-1ubuntu1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/g/gnome-themes-extra/gnome-themes-standard_3.28-1ubuntu3_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/g/gsettings-ubuntu-touch-schemas/accountsservice-ubuntu-schemas_0.0.7%2b21.10.20210712-0ubuntu2_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/i/i3status/i3status_2.13-3_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/i/ido/libido3-0.1-0_13.10.0%2b17.04.20161028-0ubuntu3_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/i/indicator-applet/indicator-applet_12.10.2%2b20.10.20200915-0ubuntu1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/i/indicator-application/indicator-application_12.10.1%2b19.04.20190308.1-0ubuntu3_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/i/indicator-appmenu/indicator-appmenu_15.02.0%2b20.10.20200617.2-0ubuntu1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/i/indicator-bluetooth/indicator-bluetooth_0.0.6%2b17.10.20170605-0ubuntu3_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/i/indicator-datetime/indicator-datetime_15.10%2b21.04.20210304-0ubuntu1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/i/indicator-keyboard/indicator-keyboard_0.0.0%2b19.10.20190716-0ubuntu3_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/i/indicator-messages/indicator-messages_13.10.1%2b18.10.20180918-0ubuntu3_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/i/indicator-power/indicator-power_12.10.6%2b17.10.20170829.1-0ubuntu7_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/i/indicator-printers/indicator-printers_0.1.7%2b17.10.20171101-0ubuntu3_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/i/indicator-session/indicator-session_17.3.20%2b21.10.20210613.1-0ubuntu1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/i/indicator-sound/indicator-sound_12.10.2%2b18.10.20180612-0ubuntu4_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/j/jayatana/jayatana_2.7-0ubuntu6_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/j/jsonrpc-glib/libjsonrpc-glib-1.0-1_3.42.0-1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/liba/libaccounts-glib/libaccounts-glib0_1.25-1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/liba/libanyevent-i3-perl/libanyevent-i3-perl_0.17-1_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/liba/libanyevent-perl/libanyevent-perl_7.170-2build2_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/liba/libasync-interrupt-perl/libasync-interrupt-perl_1.26-1build2_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/libc/libconfig/libconfig9_1.5-0.4build1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/libc/libconfuse/libconfuse2_3.3-2_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/libc/libconfuse/libconfuse-common_3.3-2_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/libe/libev/libev4_4.33-1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/libe/libev-perl/libev-perl_4.33-1build2_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/libg/libguard-perl/libguard-perl_1.023-1build7_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/libi/libindicator/indicator-common_16.10.0%2b18.04.20180321.1-0ubuntu5_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/libi/libindicator/libindicator3-7_16.10.0%2b18.04.20180321.1-0ubuntu5_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/l/lightdm-gtk-greeter/lightdm-gtk-greeter_2.0.8-2ubuntu1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/l/lightdm-gtk-greeter-settings/lightdm-gtk-greeter-settings_1.2.2-4_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/l/lightdm/liblightdm-gobject-1-0_1.30.0-0ubuntu5_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/l/lightdm/lightdm_1.30.0-0ubuntu5_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/l/lightdm-settings/lightdm-settings_1.5.7-1_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/m/moka-icon-theme/moka-icon-theme_5.4.0.4-1_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/p/python-i3ipc/python3-i3ipc_2.2.1-2_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/p/python-xapp/python3-xapp_2.2.1-2_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/p/python-xlib/python3-xlib_0.29-1_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/r/rofi/rofi_1.7.1-0.1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/t/ttf-bitstream-vera/ttf-bitstream-vera_1.10-8.2_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/u/ubuntu-touch-sounds/ubuntu-touch-sounds_15.08_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/u/unity-greeter/unity-greeter_22.04.1-0ubuntu2_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/u/unity-gtk-module/libunity-gtk2-parser0_0.0.0%2b18.04.20171202-0ubuntu3_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/u/unity-gtk-module/libunity-gtk3-parser0_0.0.0%2b18.04.20171202-0ubuntu3_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/u/unity-gtk-module/unity-gtk2-module_0.0.0%2b18.04.20171202-0ubuntu3_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/u/unity-gtk-module/unity-gtk3-module_0.0.0%2b18.04.20171202-0ubuntu3_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/u/unity-gtk-module/unity-gtk-module-common_0.0.0%2b18.04.20171202-0ubuntu3_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/u/unity-settings-daemon/libunity-settings-daemon1_15.04.1%2b21.10.20220207-0ubuntu1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/u/unity-settings-daemon/unity-settings-daemon_15.04.1%2b21.10.20220207-0ubuntu1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/u/unity-settings-daemon/unity-settings-daemon-schemas_15.04.1%2b21.10.20220207-0ubuntu1_all.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/x/xcb-util-cursor/libxcb-cursor0_0.1.1-4ubuntu1_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/x/xcb-util-xrm/libxcb-xrm0_1.0-3_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/x/xdotool/libxdo3_3.20160805.1-4_amd64.deb
+$fetch http://dk.archive.ubuntu.com/ubuntu/pool/universe/x/xdotool/xdotool_3.20160805.1-4_amd64.deb
+
+
+
+
+
