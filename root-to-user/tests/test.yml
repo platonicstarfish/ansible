@@ -1,0 +1,11 @@
+- hosts: all
+  remote_user: root
+  roles:
+    - root-to-user
+  vars_prompt:
+    - name: vault_password
+      prompt: "vault password"
+      private: yes
+      confirm: yes
+      unsafe: yes
+
