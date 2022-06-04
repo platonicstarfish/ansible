@@ -1,10 +1,5 @@
 # vim: ts=2:sw=2
 
-- name: Check required variables
-  fail: msg="Variable '{{ item }}' is not defined"
-  when: item not in vars
-  with_items: "{{ required_vars }}"
-
 - name: Assert we are root
   assert:
     that:
@@ -85,22 +80,21 @@
     host: "{{ ansible_hostname }}"
     hostname: "{{ inventory_hostname | split('@') | last }}"
 
-- name: add to inventory
+- name: ensure inventory directory
   delegate_to: localhost
   when: password is defined
-  yedit:
-    state: present
-    debug: yes
-    backup: yes
-    src: "{{ lookup('env', 'PWD') }}/inventory.yaml"
-    key: "all.hosts.{{ ansible_hostname }}"
-    value:
-      ansible_host: "{{ inventory_hostname | split('@') | last }}"
-      ansible_user: "{{ username }}"
-      ansible_ssh_pass: "{{ password | vault(vault_password) }}"
-      ansible_become_pass: "{{ password | vault(vault_password) }}"
-      ansible_connection: ssh
+  file:
+    path: "{{ lookup('env', 'PWD') }}/inventory"
+    state: directory
+    mode: '0700'
 
+- name: create inventory file
+  delegate_to: localhost
+  when: password is defined
+  template:
+    src: files/inventory.yaml.j2
+    dest: "{{ lookup('env', 'PWD') }}/inventory/{{ ansible_hostname }}.yaml"
+  
 
 - name: print username and password
   debug:
