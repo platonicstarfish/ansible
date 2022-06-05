@@ -1,0 +1,73 @@
+# vim: ts=2:sw=2
+
+- name: disable root ssh login
+  become: yes
+  lineinfile:
+    dest: "{{ sshd_config }}"
+    regexp: "^#?PermitRootLogin"
+    line: "PermitRootLogin no"
+  notify: restart sshd
+
+- name: disable empty password login
+  become: yes
+  lineinfile:
+    dest: "{{ sshd_config }}"
+    regexp: "#?PermitEmptyPasswords"
+    line: "PermitEmptyPasswords no"
+  notify: restart sshd
+
+- name: allow ssh protocol 2 only
+  become: yes
+  lineinfile:
+    dest: "{{ sshd_config }}"
+    regexp: "#?Protocol"
+    line: "Protocol 2"
+  notify: restart sshd
+
+# TODO: Should allow ssh only for users in specific group
+
+
+- name: update apt cache if needed
+  become: yes
+  apt:
+    cache_valid_time: 3600
+
+- name: perform unattended upgrades
+  become: yes
+  package:
+    name: unattended-upgrades
+
+- name: install fail2ban
+  become: yes
+  package:
+    name: fail2ban
+
+- name: enable fail2ban
+  become: yes
+  systemd:
+    state: started
+    enabled: yes
+    name: fail2ban
+
+
+- name: install ufw
+  become: yes
+  package:
+    name: ufw
+
+- name: allow ssh
+  become: yes
+  ufw:
+    rule: allow
+    name: OpenSSH
+
+- name: enable ufw with deny policy
+  become: yes
+  ufw:
+    state: enabled
+    policy: deny
+
+
+
+
+
