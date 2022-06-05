@@ -1,0 +1,32 @@
+- name: package dependencies
+  become: yes
+  apt:
+    cache_valid_time: 3600
+
+- name: just a bunch of packages i always use
+  become: yes
+  package:
+    name:
+      - git
+      - htop
+      - gnupg2
+      - net-tools
+      - wget
+      - curl
+      - python3
+      - telnet
+      - xxd
+      - nmap
+      - unzip
+      - fdisk
+      - net-tools
+      - make
+      - rsync
+      - tmux
+      - netcat
+      - dnsutils
+      - socat
+      - sshfs
+      - iotop
+      - strace
+      - iftop

@@ -4,6 +4,7 @@
   roles:
     - role: zsh
     - role: neovim
+    - role: basic_utils
 
 - hosts: py
   roles:
