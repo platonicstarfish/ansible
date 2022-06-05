@@ -1,0 +1,10 @@
+# vim: ts=2:sw=2
+
+- hosts: all
+  roles:
+    - role: root-to-user
+      become: false
+      remote_user: root
+    - role: basic_security
+      become: true
+
