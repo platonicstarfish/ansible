@@ -1,0 +1,12 @@
+# vim: ts=2:sw=2
+
+- hosts: all
+  roles:
+    - role: zsh
+    - role: basic_security
+    - role: basic_utils
+    - role: regolith
+    - role: neovim
+    - role: pyenv
+
+

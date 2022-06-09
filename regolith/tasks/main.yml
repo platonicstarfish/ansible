@@ -1,0 +1,75 @@
+# vim: ts=2:sw=2
+
+- name: regolith apt key
+  become: yes
+  apt_key:
+    state: present
+    data: "{{ lookup('file', 'regolith.key') }}"
+
+- name: regolith apt repository
+  become: yes
+  apt_repository:
+    state: present
+    repo: deb [arch=amd64] http://regolith-release-ubuntu-jammy-amd64.s3.amazonaws.com jammy main
+    filename: regolith
+
+- name: install regolith
+  become: yes
+  apt:
+    cache_valid_time: 3600
+    install_recommends: yes
+    name: regolith-desktop
+    state: present
+
+- name: install lightdm
+  become: yes
+  apt:
+    state: present
+    name: lightdm
+
+# TODO: look into the package regolith-lightdm-config
+
+- name: set lightdm as default login manager
+  become: yes
+  debconf:
+    name: lightdm
+    question: shared/default-x-display-manager
+    value: lightdm
+    vtype: select
+
+- name: disable gdm3
+  become: yes
+  systemd:
+    name: gdm3
+    enabled: no
+
+- name: enable lightdm
+  become: yes
+  systemd:
+    name: lightdm
+    enabled: yes
+
+- name: set regolith as default desktop environment user
+  lineinfile:
+    path: "{{ ansible_env.HOME }}/.dmrc"
+    regexp: "Session"
+    line: "Session=regolith"
+
+- name: set regolith as default desktop environment user
+  become: yes
+  lineinfile:
+    path: "/usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf"
+    regexp: "user-session"
+    line: "user-session=regolith"
+
+- name: remove ubuntu-desktop and gdm3
+  become: yes
+  apt:
+    state: absent
+    autoremove: yes
+    purge: yes
+    pkg:
+      - ubuntu-desktop
+      - ubuntu-desktop-minimal
+      - gdm3
+
