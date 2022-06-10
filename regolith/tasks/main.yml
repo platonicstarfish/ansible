@@ -1,5 +1,12 @@
 # vim: ts=2:sw=2
 
+- name: install dependencies
+  become: yes
+  apt:
+    cache_valid_time: 3600
+    pkg:
+      - python3-psutil
+
 - name: regolith apt key
   become: yes
   apt_key:
@@ -10,7 +17,7 @@
   become: yes
   apt_repository:
     state: present
-    repo: deb [arch=amd64] http://regolith-release-ubuntu-jammy-amd64.s3.amazonaws.com jammy main
+    repo: deb [arch=amd64] https://regolith-desktop.io/release-ubuntu-jammy-amd64 jammy main
     filename: regolith
 
 - name: install regolith
@@ -18,7 +25,15 @@
   apt:
     cache_valid_time: 3600
     install_recommends: yes
-    name: regolith-desktop
+    pkg:
+      - regolith-desktop
+      - regolith-system-ubuntu
+      - regolith-compositor-picom-glx
+      - regolith-look-gruvbox
+#      - regolith-look-solarized-dark
+#      - regolith-look-blackhole
+#      - regolith-look-nord
+#      - regolith-look-nevil
     state: present
 
 - name: install lightdm
@@ -37,11 +52,18 @@
     value: lightdm
     vtype: select
 
-- name: disable gdm3
+- name: remove ubuntu-desktop and gdm3
   become: yes
-  systemd:
-    name: gdm3
-    enabled: no
+  apt:
+    state: absent
+    autoremove: yes
+    purge: yes
+    pkg:
+      - ubuntu-desktop
+      - ubuntu-desktop-minimal
+      - gdm3
+      - ubuntu-session
+      - unity-greeter
 
 - name: enable lightdm
   become: yes
@@ -55,21 +77,41 @@
     regexp: "Session"
     line: "Session=regolith"
 
-- name: set regolith as default desktop environment user
-  become: yes
+- name: set regolith gruvbox as default look
   lineinfile:
-    path: "/usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf"
-    regexp: "user-session"
-    line: "user-session=regolith"
+    path: "{{ ansible_env.HOME }}/.config/regolith2/Xresources"
+    regexp: "regolith.look.path"
+    line: "regolith.look.path: /usr/share/regolith-look/gruvbox"
 
-- name: remove ubuntu-desktop and gdm3
-  become: yes
-  apt:
-    state: absent
-    autoremove: yes
-    purge: yes
-    pkg:
-      - ubuntu-desktop
-      - ubuntu-desktop-minimal
-      - gdm3
+- name: set screen blank time
+  dconf:
+    key: "/org/gnome/desktop/session/idle-delay"
+    value: "uint32 1800"
+    state: present
+
+- name: no location tracking please
+  dconf:
+    key: "/org/gnome/system/location/enabled"
+    value: "false"
+    state: present
+
+- name: do not suspend while ac connected and idle
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-type"
+    value: "'nothing'"
+    state: present
+
+- name: workspaces on all connected displays
+  dconf:
+    key: "/org/gnome/mutter/workspaces-only-on-primary"
+    value: "false"
+    state: present
+
+- name: no matter what the locale is we always want 24 hour clock
+  dconf:
+    key: "/com/canonical/indicator/datetime/time-format"
+    value: "'24-hour'"
+    state: present
+
+
 
