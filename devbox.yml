@@ -1,6 +1,12 @@
 # vim: ts=2:sw=2
 
 - hosts: all
+  pre_tasks:
+    - name: set date (otherwise apt update might fail)
+      become: yes
+      shell:
+        cmd: "date -s '{{ lookup('pipe', 'date -Iseconds') }}'"
+
   roles:
     - role: zsh
     - role: basic_security
