@@ -44,13 +44,6 @@
 
 # TODO: look into the package regolith-lightdm-config
 
-- name: set lightdm as default login manager
-  become: yes
-  debconf:
-    name: lightdm
-    question: shared/default-x-display-manager
-    value: lightdm
-    vtype: select
 
 - name: remove ubuntu-desktop and gdm3
   become: yes
@@ -65,20 +58,37 @@
       - ubuntu-session
       - unity-greeter
 
+- name: set lightdm as default login manager
+  become: yes
+  debconf:
+    name: lightdm
+    question: shared/default-x-display-manager
+    value: lightdm
+    vtype: select
+
+- name: set default display manager
+  become: yes
+  copy:
+    content: "/usr/sbin/lightdm"
+    dest: "/etc/X11/default-display-manager"
+
 - name: enable lightdm
   become: yes
   systemd:
     name: lightdm
     enabled: yes
+    state: started
 
 - name: set regolith as default desktop environment user
   lineinfile:
+    create: yes
     path: "{{ ansible_env.HOME }}/.dmrc"
     regexp: "Session"
     line: "Session=regolith"
 
 - name: set regolith gruvbox as default look
   lineinfile:
+    create: yes
     path: "{{ ansible_env.HOME }}/.config/regolith2/Xresources"
     regexp: "regolith.look.path"
     line: "regolith.look.path: /usr/share/regolith-look/gruvbox"
