@@ -1,3 +1,8 @@
+- name: neovim unstable ppa
+  become: yes
+  apt_repository:
+    repo: ppa:neovim-ppa/unstable
+
 - name: install neovim
   become: yes
   apt: 
