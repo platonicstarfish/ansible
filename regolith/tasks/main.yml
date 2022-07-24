@@ -7,23 +7,40 @@
     pkg:
       - python3-psutil
 
+#- name: regolith apt key
+#  become: yes
+#  apt_key:
+#    state: present
+#    data: "{{ lookup('file', 'regolith.key') }}"
+
 - name: regolith apt key
   become: yes
-  apt_key:
-    state: present
-    data: "{{ lookup('file', 'regolith.key') }}"
+  shell:
+    cmd: >
+      wget -qO - https://regolith-desktop.org/regolith.key |
+      gpg --dearmor | sudo tee /usr/share/keyrings/regolith-archive-keyring.gpg > /dev/null
+    creates: /usr/share/keyrings/regolith-archive-keyring.gpg 
+
+#- name: regolith apt repository
+#  become: yes
+#  apt_repository:
+#    state: present
+#    repo: deb [arch=amd64 signed-by=/usr/share/keyrings/regolith-archive-keyring.gpg] https://regolith-desktop.io/release-ubuntu-jammy-amd64 jammy main
+#    filename: regolith
 
 - name: regolith apt repository
   become: yes
-  apt_repository:
-    state: present
-    repo: deb [arch=amd64] https://regolith-desktop.io/release-ubuntu-jammy-amd64 jammy main
-    filename: regolith
+  shell:
+    cmd: >
+      echo deb "[arch=amd64 signed-by=/usr/share/keyrings/regolith-archive-keyring.gpg]
+      https://regolith-desktop.org/release-ubuntu-jammy-amd64 jammy main" |
+      sudo tee /etc/apt/sources.list.d/regolith.list
+    creates: /etc/apt/sources.list.d/regolith.list
 
 - name: install regolith
   become: yes
   apt:
-    cache_valid_time: 3600
+    update_cache: yes
     install_recommends: yes
     pkg:
       - regolith-desktop
