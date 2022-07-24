@@ -1,3 +1,8 @@
+- name: install dependencies for adding ppa
+  become: yes
+  apt: 
+    name: gnupg2
+
 - name: neovim unstable ppa
   become: yes
   apt_repository:
