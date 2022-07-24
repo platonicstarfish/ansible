@@ -7,12 +7,6 @@
     pkg:
       - python3-psutil
 
-#- name: regolith apt key
-#  become: yes
-#  apt_key:
-#    state: present
-#    data: "{{ lookup('file', 'regolith.key') }}"
-
 - name: regolith apt key
   become: yes
   shell:
@@ -20,13 +14,6 @@
       wget -qO - https://regolith-desktop.org/regolith.key |
       gpg --dearmor | sudo tee /usr/share/keyrings/regolith-archive-keyring.gpg > /dev/null
     creates: /usr/share/keyrings/regolith-archive-keyring.gpg 
-
-#- name: regolith apt repository
-#  become: yes
-#  apt_repository:
-#    state: present
-#    repo: deb [arch=amd64 signed-by=/usr/share/keyrings/regolith-archive-keyring.gpg] https://regolith-desktop.io/release-ubuntu-jammy-amd64 jammy main
-#    filename: regolith
 
 - name: regolith apt repository
   become: yes
@@ -138,6 +125,12 @@
   dconf:
     key: "/com/canonical/indicator/datetime/time-format"
     value: "'24-hour'"
+    state: present
+
+- name: default to danish keyboard layout with us as second option
+  dconf:
+    key: "/org/gnome/desktop/input-sources/sources"
+    value: "[('xkb', 'dk'), ('xkb', 'us')]"
     state: present
 
 
