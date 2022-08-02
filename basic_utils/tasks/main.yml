@@ -7,6 +7,7 @@
   become: yes
   package:
     name:
+      - openssh-server
       - git
       - htop
       - gnupg2

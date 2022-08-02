@@ -9,8 +9,8 @@
 
   roles:
     - role: zsh
-    - role: basic_security
     - role: basic_utils
+    - role: basic_security
     - role: regolith
     - role: neovim
     - role: pyenv
