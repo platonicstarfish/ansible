@@ -18,3 +18,32 @@
   lineinfile:
     path: "{{ ansible_env.HOME }}/.zshrc"
     line: 'alias vim="nvim"'
+
+- name: clone packer
+  git:
+    repo: 'https://github.com/wbthomason/packer.nvim'
+    dest: "{{ ansible_env.HOME }}/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    depth: 1
+
+- name: nvim config dir
+  file:
+    path: "{{ ansible_env.HOME}}/.config/nvim"
+    state: directory
+
+- name: nvim config dir lua
+  file:
+    path: "{{ ansible_env.HOME}}/.config/nvim/lua"
+    state: directory
+
+- name: nvim init
+  template:
+    src: files/init.lua.j2
+    dest: "{{ ansible_env.HOME}}/.config/nvim/init.lua"
+
+- name: nvim plugins
+  template:
+    src: files/plugins.lua.j2
+    dest: "{{ ansible_env.HOME}}/.config/nvim/lua/plugins.lua"
+
+
+
