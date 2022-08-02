@@ -19,20 +19,20 @@
     path: "{{ ansible_env.HOME }}/.zshrc"
     line: 'alias vim="nvim"'
 
+- name: nvim packer dir
+  file:
+    path: "{{ ansible_env.HOME }}/.local/share/nvim/site/pack/packer/start"
+    state: directory
+
 - name: clone packer
   git:
     repo: 'https://github.com/wbthomason/packer.nvim'
     dest: "{{ ansible_env.HOME }}/.local/share/nvim/site/pack/packer/start/packer.nvim"
     depth: 1
 
-- name: nvim config dir
+- name: nvim config dir lua plugins config
   file:
-    path: "{{ ansible_env.HOME}}/.config/nvim"
-    state: directory
-
-- name: nvim config dir lua
-  file:
-    path: "{{ ansible_env.HOME}}/.config/nvim/lua"
+    path: "{{ ansible_env.HOME}}/.config/nvim/lua/plugins/config"
     state: directory
 
 - name: nvim init
@@ -43,7 +43,20 @@
 - name: nvim plugins
   template:
     src: files/plugins.lua.j2
-    dest: "{{ ansible_env.HOME}}/.config/nvim/lua/plugins.lua"
+    dest: "{{ ansible_env.HOME}}/.config/nvim/lua/plugins/init.lua"
 
+- name: nvim-tree plugin config
+  template:
+    src: files/config/nvim-tree.lua.j2
+    dest: "{{ ansible_env.HOME}}/.config/nvim/lua/plugins/config/nvim-tree.lua"
+
+- name: nvim-tree plugin config
+  template:
+    src: files/keybinds.lua.j2
+    dest: "{{ ansible_env.HOME}}/.config/nvim/lua/keybinds.lua"
+
+- name: nvim packer sync
+  shell:
+    cmd: "nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
 
 

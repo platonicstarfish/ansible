@@ -1,0 +1,12 @@
+local nest = require('nest')
+
+nest.applyKeymaps {
+	{ '<C-', {
+		{'h>', '<C-W>h'},
+		{'j>', '<C-W>j'},
+		{'k>', '<C-W>k'},
+		{'l>', '<C-W>l'},
+		{'n>', '<Cmd>NvimTreeToggle<CR>'},
+	}},
+}
+
