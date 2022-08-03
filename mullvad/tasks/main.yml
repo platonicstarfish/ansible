@@ -1,0 +1,5 @@
+- name: Install mullvad deb
+  become: true
+  apt:
+    deb: https://mullvad.net/download/app/deb/latest
+

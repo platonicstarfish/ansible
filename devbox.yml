@@ -14,5 +14,6 @@
     - role: regolith
     - role: neovim
     - role: pyenv
+    - role: mullvad
 
 
