@@ -38,6 +38,7 @@
 #      - regolith-look-blackhole
 #      - regolith-look-nord
 #      - regolith-look-nevil
+      - i3xrocks-battery
     state: present
 
 - name: install lightdm
