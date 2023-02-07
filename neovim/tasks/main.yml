@@ -1,18 +1,30 @@
-- name: install dependencies for adding ppa
-  become: yes
-  apt: 
-    name: gnupg2
+- name: Neovim on ubuntu
+  when: (ansible_facts['distribution'] == "Ubuntu")
+  block:
 
-- name: neovim unstable ppa
-  become: yes
-  apt_repository:
-    repo: ppa:neovim-ppa/unstable
+    - name: install dependencies for adding ppa
+      become: yes
+      apt: 
+        name: gnupg2
+    
+    - name: neovim unstable ppa
+      become: yes
+      apt_repository:
+        repo: ppa:neovim-ppa/unstable
+    
+    - name: install neovim
+      become: yes
+      apt: 
+        name: neovim
+        update_cache: yes
 
-- name: install neovim
-  become: yes
-  apt: 
-    name: neovim
-    update_cache: yes
+- name: Neovim on debian
+  when: (ansible_facts['distribution'] == "Debian")
+  block:
+    - name: install neovim debian deb
+      become: yes
+      apt:
+        deb: https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.deb
 
 - name: alias vim -> nvim
   lineinfile:
