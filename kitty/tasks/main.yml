@@ -1,0 +1,33 @@
+- name: package dependencies
+  become: yes
+  apt:
+    cache_valid_time: 3600
+
+- name: kitty terminal emulator
+  become: yes
+  package:
+    name:
+      - kitty
+
+- name: set kitty as default terminal emulator
+  become: yes
+  alternatives:
+    name: x-terminal-emulator
+    path: /usr/bin/kitty
+
+
+- name: kitty gruvbox theme clone
+  git:
+    repo: 'https://github.com/wdomitrz/kitty-gruvbox-theme'
+    dest: "{{ ansible_env.HOME }}/.config/kitty/kitty-gruvbox-theme"
+
+- name: kitty gruvbox theme as default
+  lineinfile:
+    path: "{{ ansible_env.HOME }}/.config/kitty/kitty.conf"
+    line: 'include kitty-gruvbox-theme/gruvbox_dark_hard.conf'
+
+- name: kitty disable bell
+  lineinfile:
+    path: "{{ ansible_env.HOME }}/.config/kitty/kitty.conf"
+    line: 'enable_audio_bell no'
+
