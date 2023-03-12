@@ -31,3 +31,5 @@
       - iotop
       - strace
       - iftop
+      - apt-file
+      - zfs-auto-snapshot
