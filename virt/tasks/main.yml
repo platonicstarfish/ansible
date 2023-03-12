@@ -1,0 +1,33 @@
+- name: hashicorp gpg key
+  become: yes
+  copy:
+    src: hashicorp.gpg
+    dest: /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+- name: hashicorp apt source
+  become: yes
+  copy:
+    src: hashicorp.list
+    dest: /etc/apt/sources.list.d/hashicorp.list
+
+- name: package dependencies
+  become: yes
+  apt:
+    cache_valid_time: 3600
+
+- name: virt and dependencies
+  become: yes
+  package:
+    name:
+      - virt-manager
+      - virt-p2v
+      - virt-top
+      - virt-v2v
+      - virt-viewer
+      - virt-what
+      - virtinst
+      - libvirt-clients
+      - libvirt-daemon
+      - gnome-boxes
+      - packer
+

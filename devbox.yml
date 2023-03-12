@@ -17,5 +17,6 @@
       #    - role: mullvad
     - role: kitty
     - role: vscode
+    - role: virt
 
 
