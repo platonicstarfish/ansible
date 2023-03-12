@@ -1,0 +1,22 @@
+# vim: ts=2:sw=2
+
+- name: install vscode
+  include_role:
+    name: gantsign.visual-studio-code
+  vars:
+    users:
+      - username: "{{ ansible_user_id }}"
+        visual_studio_code_extensions:
+          - ms-python.python
+          - rust-lang.rust-analyzer
+          - eamodio.gitlens
+          - github.vscode-pull-request-github
+        visual_studio_code_settings: {
+          "workbench.colorTheme": "Abyss",
+          "[python]": {
+            "editor.formatOnType": true
+          }
+        }
+
+
+
